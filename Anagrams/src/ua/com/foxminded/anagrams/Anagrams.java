@@ -1,7 +1,6 @@
 package ua.com.foxminded.anagrams;
 
 import java.util.Scanner;
-//import java.util.regex.*;
 
 public class Anagrams {
 
