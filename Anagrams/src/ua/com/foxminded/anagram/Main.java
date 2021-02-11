@@ -17,7 +17,7 @@ public class Main {
 		
 		for (int k = 0; k < words.length; k++) { 
 		word=words[k];
-		reversedWord=reverseWord(words[k]);
+		reversedWord=reverseWord(word);
 		i=0;
 		j=0;
 		while(i<word.length()) {  
