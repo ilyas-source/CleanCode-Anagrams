@@ -1,51 +1,41 @@
 package ua.com.foxminded.anagram;
 
-import java.util.Scanner;
-
 public class Anagram {
 
-	public void reverse(String string) {
+	public static final String DELIMITER = " ";
 
-		System.out.println("Enter text:");
-		Scanner scanner = new Scanner(System.in);
-		String source = scanner.nextLine();
-		scanner.close();
-		final String DELIMITER = " ";
-		String[] words = source.split(DELIMITER);
+	public String reverseText(String text) {
+		String[] sourceWords = text.split(DELIMITER);
+		String result = "";
 
-		String word, reversedWord;
-		int i, j;
+		for (int i = 0; i < sourceWords.length; i++) {
+			result += reverseWord(sourceWords[i]) + " ";
+		}
+		return result.substring(0, result.length() - 1);
+	}
 
-		for (int k = 0; k < words.length; k++) {
-			word = words[k];
-			reversedWord = reverseWord(word);
-			i = 0;
-			j = 0;
-			while (i < word.length()) {
-				if (!Character.isLetter(word.charAt(i)))
-					i++;
-				else {
-					word = word.substring(0, i) + reversedWord.substring(j, j + 1) + word.substring(i + 1);
-					j++;
-					i++;
+	private String reverseWord(String word) {
+		String result = "";
+		int forwardPointer = 0, backwardPointer = word.length() - 1;
+
+		while (forwardPointer < word.length()) {
+
+			while (backwardPointer >= 0) {
+				if (!Character.isLetter(word.charAt(backwardPointer))) {
+					backwardPointer--;
+				} else {
+					break;
 				}
 			}
-			System.out.print(word);
-			if (words.length > k)
-				System.out.print(" ");
+
+			if (Character.isLetter(word.charAt(forwardPointer))) {
+				result += word.substring(backwardPointer, backwardPointer + 1);
+				backwardPointer--;
+			} else {
+				result += word.substring(forwardPointer, forwardPointer + 1);
+			}
+			forwardPointer++;
 		}
+		return result;
 	}
-
-	private static String reverseWord(String word) {
-
-		String output = "";
-		for (int j = word.length() - 1; j >= 0; j--) {
-			if (Character.isLetter(word.charAt(j)))
-				output += word.substring(j, j + 1);
-		}
-
-		return output;
-
-	}
-
 }
