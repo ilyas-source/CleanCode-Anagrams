@@ -1,41 +1,55 @@
 package ua.com.foxminded.anagram;
 
+import java.lang.StringBuilder;
+
 public class Anagram {
 
 	public static final String DELIMITER = " ";
 
 	public String reverseText(String text) {
-		String[] sourceWords = text.split(DELIMITER);
-		String result = "";
+		String[] words = text.split(DELIMITER);
+		StringBuilder result = new StringBuilder("");
 
-		for (int i = 0; i < sourceWords.length; i++) {
-			result += reverseWord(sourceWords[i]) + " ";
+		for (int i = 0; i < words.length; i++) {
+			result.append(reverseWord(words[i]));
+			if (i < words.length - 1) {
+				result.append(DELIMITER);
+			}
 		}
-		return result.substring(0, result.length() - 1);
+		return result.toString();
 	}
 
 	private String reverseWord(String word) {
-		String result = "";
-		int forwardPointer = 0, backwardPointer = word.length() - 1;
+		char[] chars = word.toCharArray();
+		int leftIndex = 0;
+		int rightIndex = word.length() - 1;
+		char buffer;
 
-		while (forwardPointer < word.length()) {
+		boolean leftIsLetter = false;
+		boolean rightIsLetter = false;
 
-			while (backwardPointer >= 0) {
-				if (!Character.isLetter(word.charAt(backwardPointer))) {
-					backwardPointer--;
-				} else {
-					break;
-				}
+		while (leftIndex < rightIndex) {
+			leftIsLetter = Character.isLetter(chars[leftIndex]);
+			rightIsLetter = Character.isLetter(chars[rightIndex]);
+			if (leftIsLetter && rightIsLetter) {
+				buffer = chars[leftIndex];
+				chars[leftIndex] = chars[rightIndex];
+				chars[rightIndex] = buffer;
+				leftIndex++;
+				rightIndex--;
 			}
-
-			if (Character.isLetter(word.charAt(forwardPointer))) {
-				result += word.substring(backwardPointer, backwardPointer + 1);
-				backwardPointer--;
-			} else {
-				result += word.substring(forwardPointer, forwardPointer + 1);
+			if ((!leftIsLetter) && (!rightIsLetter)) {
+				leftIndex++;
+				rightIndex--;
 			}
-			forwardPointer++;
+			if (leftIsLetter && (!rightIsLetter)) {
+				rightIndex--;
+			}
+			if ((!leftIsLetter) && rightIsLetter) {
+				leftIndex++;
+			}
 		}
-		return result;
+
+		return String.valueOf(chars);
 	}
 }
