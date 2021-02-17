@@ -7,6 +7,9 @@ public class Anagram {
 	public static final String DELIMITER = " ";
 
 	public String reverseText(String text) {
+		if (text == null) {
+			return null;
+		}
 		String[] words = text.split(DELIMITER);
 		StringBuilder result = new StringBuilder();
 
