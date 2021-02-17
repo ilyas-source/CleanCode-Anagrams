@@ -9,42 +9,42 @@ class AnagramTest {
 	Anagram anagram = new Anagram();
 
 	@Test
-	void givenNull_onReverseText_getNull() {
+	void givenNull_whenReverseText_thenGetNull() {
 		assertEquals(null, anagram.reverseText(null));
 	}
 
 	@Test
-	void givenEmptyString_onReverseText_getEmptyString() {
+	void givenEmptyString_whenReverseText_thenGetEmptyString() {
 		assertEquals("", anagram.reverseText(""));
 	}
 
 	@Test
-	void givenPlainWord_onReverseText_getReversedWord() {
+	void givenPlainWord_whenReverseText_thenGetReversedWord() {
 		assertEquals("Hello", anagram.reverseText("olleH"));
 	}
 
 	@Test
-	void givenMixedWord_onReverseText_getReversedWord() {
+	void givenMixedWord_whenReverseText_thenGetReversedWord() {
 		assertEquals("qwe1234rty", anagram.reverseText("ytr1234ewq"));
 	}
 
 	@Test
-	void givenNoLettersWord_onReverseText_getSameWord() {
+	void givenNoLettersWord_whenReverseText_thenGetSameWord() {
 		assertEquals("123!@#$456", anagram.reverseText("123!@#$456"));
 	}
 
 	@Test
-	void givenPlainText_onReverseText_getReversedText() {
+	void givenPlainText_whenReverseText_thenGetReversedText() {
 		assertEquals("Hello World", anagram.reverseText("olleH dlroW"));
 	}
 
 	@Test
-	void givenMixedText_onReverseText_getReversedText() {
+	void givenMixedText_whenReverseText_thenGetReversedText() {
 		assertEquals("qwe!@#$rt1 %^&*asdf", anagram.reverseText("tre!@#$wq1 %^&*fdsa"));
 	}
 
 	@Test
-	void givenNoLettersText_onReverseText_getSameText() {
+	void givenNoLettersText_whenReverseText_thenGetSameText() {
 		assertEquals("123!@#$4 &*9876", anagram.reverseText("123!@#$4 &*9876"));
 	}
 
