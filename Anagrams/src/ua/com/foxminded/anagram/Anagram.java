@@ -1,7 +1,5 @@
 package ua.com.foxminded.anagram;
 
-import java.lang.StringBuilder;
-
 public class Anagram {
 
 	public static final String DELIMITER = " ";
