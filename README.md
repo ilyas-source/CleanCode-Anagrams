@@ -13,8 +13,8 @@ Writing clean code is important because it allows you to clearly communicate wit
 This simple project is my entry point to the world of clean code, Junit testing, getting used to Git and getting my code reviewed.
 
 ## Technologies used:
-Plain Java
+* Plain Java
 
-Junit
+* Junit
 
-Git
+* Git
